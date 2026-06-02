@@ -1,28 +1,30 @@
 
-interface GreetingProps {
-  name: string
-  course: string
-  role?: string
-}
+import { useState } from "react"
 
-function App() {
-  return ( 
-    <div>
-      <h1>Hello react</h1>
-      <Greeting name="Von Claudio" course="Mechatronic Engineering"/>
-      <Greeting name="Jane Doe" course="Computer Science" role="student" />
-    </div>
-    )
-}
+function Counter() {
+  const [count, setCount] = useState(0)
+  const [label, setLabel] = useState("paused")
 
-export default App
-
-function Greeting({ name, course, role}: GreetingProps ) {
   return (
     <div>
-      <h2>{name}</h2>
-      <p>{course}</p>
-      {role && <p>{role}</p>}
+      <p>Count: {count}</p>
+      <p>Label: {label}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+      <button onClick={() => setCount(0)}>Reset</button>
+      <button onClick={() => setLabel(label === "counting" ? "paused" : "counting")}>Toggle label</button>
     </div>
   )
 }
+
+function App() {
+  return (
+    <div>
+      <h1>useState Demo</h1>
+      <Counter />
+      <Counter />
+    </div>
+  )
+}
+
+export default App
