@@ -1,15 +1,27 @@
-import { UserCard } from "./components/UserCard"
-import { UserContext } from './context/UserContext'
-
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import Home from "./pages/Home"
+import About from "./pages/About"
+import UserDetail from "./pages/UserDetail"
+import Users from './pages/Users'
 
 function App() {
-  const user = { name: "Von Claudio", role: "Student", age: 19}
 
   return (
-    <UserContext.Provider value={{ user }}>
-      <h1>useContext Demo</h1>
-      <UserCard />
-    </UserContext.Provider>
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/users/1">User 1</Link>
+        <Link to="/users/2">User 2</Link>
+        <Link to="/users">Users</Link>
+      </nav>
+      <Routes>
+        <Route path="/users" element={<Users />} />
+        <Route path="/users/:id" element={<UserDetail />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
