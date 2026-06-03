@@ -9,7 +9,6 @@ function App() {
 
   return (
     <div>
-      <h1>Practice</h1>
       <TextList />
     </div>
   )
